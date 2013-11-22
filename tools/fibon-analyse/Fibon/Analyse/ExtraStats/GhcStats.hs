@@ -53,12 +53,12 @@ parseMachineReadableStats :: ByteString -> Maybe GhcStats
 parseMachineReadableStats s = do
   stats <- toAssocList s
   let find = flip lookup stats
-  bytesA <- find "bytes allocated" >>= readMem
-  numG   <- find "num_GCs" >>= readMem
-  avgB   <- find "average_bytes_used" >>= readMem
-  maxB   <- find "max_bytes_used" >>= readMem
-  numS   <- find "num_byte_usage_samples" >>= readMem
-  peakA  <- find "peak_megabytes_allocated" >>= readMem
+  bytesA <- find "bytes allocated" >>= readBytes
+  numG   <- find "num_GCs" >>= readBytes
+  avgB   <- find "average_bytes_used" >>= readBytes
+  maxB   <- find "max_bytes_used" >>= readBytes
+  numS   <- find "num_byte_usage_samples" >>= readBytes
+  peakA  <- find "peak_megabytes_allocated" >>= readMBytes
   initC  <- find "init_cpu_seconds" >>= readTime
   initW  <- find "init_wall_seconds" >>= readTime
   mutC   <- find "mutator_cpu_seconds" >>= readTime
@@ -97,8 +97,11 @@ parseMachineReadableStats s = do
 toAssocList :: ByteString -> Maybe [(ByteString, ByteString)]
 toAssocList = maybeResult . parse parseList . BC.unlines . drop 1 . BC.lines
 
-readMem :: ByteString -> Maybe (Measurement MemSize)
-readMem s = (Single . MemSize . fromIntegral . fst) `liftM` (BC.readInteger s)
+readBytes :: ByteString -> Maybe (Measurement MemSize)
+readBytes s = (Single . MemSize . fromIntegral . fst) `liftM` (BC.readInteger s)
+
+readMBytes :: ByteString -> Maybe (Measurement MemSize)
+readMBytes s = (Single . MemSize . fromIntegral . (* 1048576) . fst) `liftM` (BC.readInteger s)
 
 readTime :: ByteString -> Maybe (Measurement ExecTime)
 readTime s = (Single . ExecTime . fst) `liftM` (readDouble s)
