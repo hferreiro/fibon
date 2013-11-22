@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 module Fibon.Run.Actions (
       runBundle
     , buildBundle
