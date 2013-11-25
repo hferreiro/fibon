@@ -97,19 +97,19 @@ Executable fibon-run
                   config
   build-depends:  base >= 4 && < 5
                 , containers
-                , mtl         >= 1.0 && < 2.1
-                , directory   >= 1.0 && < 1.2
-                , filepath    >= 1.1 && < 1.3
-                , hslogger    >= 1.0 && < 1.2
-                , process     == 1.0.*
-                , time        >= 1.1 && < 1.3
+                , mtl         >= 1.0 && < 2.2
+                , directory   >= 1.0 && < 1.3
+                , filepath    >= 1.1 && < 1.4
+                , hslogger    >= 1.0 && < 1.3
+                , process     >= 1.0 && < 1.2
+                , time        >= 1.1 && < 1.5
                 , old-locale  == 1.0.*
-                , old-time    == 1.0.*
-                , statistics  >= 0.6 && < 0.9
-                , vector      >= 0.6 && < 0.8
-                , bytestring  == 0.9.*
-                , cereal      == 0.3.*
-                , syb         >= 0.1 && < 0.4
+                , old-time    >= 1.0 && < 1.2
+                , statistics  >= 0.6 && < 0.11
+                , vector      >= 0.6 && < 0.11
+                , bytestring  >= 0.9 && < 0.11
+                , cereal      >= 0.3 && < 0.5
+                , syb         >= 0.1 && < 0.5
                 , parallel-io >= 0.3 && < 0.4
                 , unix
 
@@ -118,8 +118,8 @@ Executable fibon-init
   ghc-options:    -Wall
   hs-source-dirs: tools/fibon-init
   build-depends:  base >= 4 && < 5
-                , filepath    >= 1.1 && < 1.3
-                , directory   >= 1.0 && < 1.2
+                , filepath    >= 1.1 && < 1.4
+                , directory   >= 1.0 && < 1.3
                 , Cabal       >= 1.8
 
 Executable fibon-analyse
@@ -128,17 +128,17 @@ Executable fibon-analyse
   hs-source-dirs: tools/fibon-analyse, lib
   build-depends:    base >= 4 && < 5
                     , containers
-                    , mtl         >= 1.0 && < 2.1
-                    , filepath    >= 1.1 && < 1.3
-                    , bytestring == 0.9.*
+                    , mtl         >= 1.0 && < 2.2
+                    , filepath    >= 1.1 && < 1.4
+                    , bytestring >= 0.9 && < 0.11
                     , tabular    == 0.2.*
-                    , vector     >= 0.6 && < 0.8
-                    , statistics >= 0.6 && < 0.9
-                    , regex-compat == 0.93.*
-                    , attoparsec >= 0.8.5.2 && < 0.8.6
-                    , bytestring-lexing == 0.2.*
-                    , cereal     == 0.3.*
-                    , syb         >= 0.1 && < 0.4
+                    , vector     >= 0.6 && < 0.11
+                    , statistics >= 0.6 && < 0.11
+                    , regex-compat >= 0.93 && < 0.96
+                    , attoparsec >= 0.8.5.2 && < 0.11
+                    , bytestring-lexing >= 0.2 && < 0.5
+                    , cereal     >= 0.3 && < 0.5
+                    , syb         >= 0.1 && < 0.5
   extensions: CPP
 
 Executable fibon-nofib
@@ -154,16 +154,16 @@ Executable fibon-nofib
     build-depends:  base >= 4 && < 5
                   , containers
                   , mtl         >= 1.1
-                  , filepath    >= 1.1 && < 1.3
-                  , directory   >= 1.0 && < 1.2
+                  , filepath    >= 1.1 && < 1.4
+                  , directory   >= 1.0 && < 1.3
                   , Cabal       >= 1.8
                   , process     >= 1.0
-                  , hslogger    >= 1.0 && < 1.2
-                  , statistics >= 0.6 && < 0.8.1
-                  , syb         >= 0.1 && < 0.4
+                  , hslogger    >= 1.0 && < 1.3
+                  , statistics >= 0.6 && < 0.11
+                  , syb         >= 0.1 && < 0.5
                   , cereal      >= 0.3
                   , bytestring  >= 0.9
                   , vector      >= 0.6
-                  , time        >= 1.1 && < 1.3
+                  , time        >= 1.1 && < 1.5
                   , old-time    >= 1.0
                   , old-locale  >= 1.0
