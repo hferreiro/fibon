@@ -96,7 +96,7 @@ pprRawPerf u (RawTime t)    =
   printf "%0.2f%s"  ((fromExecTime . ePoint) t) (pprUnit u "s")
 pprRawPerf u (RawSize s)    =
   printf "%0d%s"
-    (round (fromIntegral ((fromMemSize . ePoint) s) / 1000 :: Double)::Word64)
+    (round (fromIntegral ((fromMemSize . ePoint) s) / 1024 :: Double)::Word64)
     (pprUnit u "k")
 {-
 pprRawPerf u (RawTimeInterval e) = printf "%0.2f%s"
