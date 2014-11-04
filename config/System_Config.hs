@@ -18,7 +18,7 @@ config = RunConfig {
   }
   where
     --shootout = filter (\b -> benchGroup b == Shootout) allBenchmarks
-    hackage = filter (\b -> benchGroup b == Hackage) allBenchmarks
+    hackage = filter (\b -> benchGroup b == Hackage && b /= Gf) allBenchmarks
 
 collectStats :: Bool
 collectStats = True
@@ -28,7 +28,7 @@ build :: ConfigBuilder
 -- Default Settings for All Benchmarks
 --
 build ConfigTuneDefault ConfigBenchDefault = do
-  setTimeout $ Limit 0 90 0
+  setTimeout $ Limit 0 15 0
   append ConfigureFlags "--ghc-option=-rtsopts"
 
   maybe done
